@@ -1,0 +1,17 @@
+server:
+  port: 8085
+
+spring:
+  kafka:
+    bootstrap-servers: 43.200.90.54:9092
+    consumer:
+      group-id: demo-service
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
+    properties:
+      schema.registry.url: http://43.200.90.54:8081
+      specific.avro.reader: true
+      value.subject.name.strategy: io.confluent.kafka.serializers.subject.TopicRecordNameStrategy
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
